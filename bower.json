@@ -1,0 +1,16 @@
+{
+  "name": "scaling-tribble",
+  "version": "0.0.0",
+  "homepage": "https://github.com/8bitg/scaling-tribble",
+  "authors": [
+    "Greg <harrison.greg.c@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
