@@ -13,4 +13,4 @@ twitter_username: 8bt_g
 github_username:  8bitg
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
