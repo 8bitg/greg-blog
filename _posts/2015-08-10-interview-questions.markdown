@@ -84,7 +84,7 @@ The event is captured by the *outermost* element and propagated to the inner ele
 Def: **Event Delegation** is a simple technique by which you add a single event handler to a parent element in order to avoid having to add event handlers to multiple child elements.  
 
 Delegation makes use of **Event Bubbling** and the **target element**.
-When an element is triggered on an *element*, like a Mouse Click on a Button, the same event is also triggered on all of that element's ancestors, basically, the explanation for *Event Bubbling*.
+When an event is triggered on an *element*, like a Mouse Click on a Button, the same event is also triggered on all of that element's ancestors, basically, the explanation for *Event Bubbling*.
 The **Target Element** of any event is the *originating* element, in this case *the button*, and is stored in a property of the **event object**.
 
 Using Delegation, it is possible to add an event handler to an element, wait for an event to bubble up from a child, and determine from which element the event originated.
