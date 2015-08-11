@@ -30,7 +30,7 @@ This file contains a number of front-end interview questions that can be used wh
   1. [How to Contribute](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/CONTRIBUTING.md)
   1. [License](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/LICENSE.md)
 
-#### General Questions:
+#### General Questions: <a id="general-questions"></a>
 
 1. What did you learn yesterday/this week?
   * How to use Markdown quickly and efficiently.
@@ -99,15 +99,45 @@ This file contains a number of front-end interview questions that can be used wh
   * **CORS = Cross-Origin Resource Sharing**.
   * Provides a way for **web servers** to support cross-site access controls, which enable **secure cross-site data transfers**.
 
-#### HTML Questions:
+#### HTML Questions: <a id="html-questions"></a>
 
 1. What does a `doctype` do?
+  * The `<!DOCTYPE>` declaration is an instruction to the web browser about what version of HTML the page is written in.
 1. What's the difference between standards mode and quirks mode?
+  * In **quirks mode**, layout emulates nonstandard behavior in Navigator 4 and Internet Explorer 5 for Windows that is required not to break existing content on the Web. 
+  * In **full standards mode**, the behavior is (hopefully) the behavior described by the HTML and CSS specifications. 
+  * In **almost standards mode**, there are only a very small number of quirks implemented.
+  * [Learn More from MDN](https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode)
 1. What's the difference between HTML and XHTML?
+  * **XHTML** is **XML** not *HTML*.
+  * **XHTML** differs from HTML in how strict it is. It requires careful adherence to a number of criteria: DOCTYPE is **mandatory**, html head title and body are **mandatory**.
+  * [Learn More Here](http://www.w3schools.com/html/html_xhtml.asp)
 1. Are there any problems with serving pages as `application/xhtml+xml`?
+  * This tells the browser that the file you are sending should be interpreted as XHTML and could cause issues if you are sending an HTML file that does not meet the strict criteria.
 1. How do you serve a page with content in multiple languages?
 1. What kind of things must you be wary of when design or developing for multilingual sites?
 1. What are `data-` attributes good for?
+  * Allow us to store extra information on standard, semantic HTML.
+  * These data values can be accessed and read by JavaScript using getAttribute() or more simply by reading out the dataset from a `DOMStringMap`.
+
+  ```html
+    <article
+      id="electriccars"
+      data-columns="3"
+      data-index-number="12314"
+      data-parent="cars">
+      ...
+    </article>
+  ```
+
+  ```javascript
+  var article = document.getElementById('electriccars');
+  
+  article.dataset.columns // "3"
+  article.dataset.indexNumber // "12314"
+  article.dataset.parent // "cars"
+  ```
+
 1. Consider HTML5 as an open web platform. What are the building blocks of HTML5?
 1. Describe the difference between a `cookie`, `sessionStorage` and `localStorage`.
 1. Describe the difference between `<script>`, `<script async>` and `<script defer>`.
@@ -115,7 +145,7 @@ This file contains a number of front-end interview questions that can be used wh
 1. What is progressive rendering?
 1. Have you used different HTML templating languages before?
 
-#### CSS Questions:
+#### CSS Questions: <a id="css-questions"></a>
 
 1. What is the difference between classes and ID's in CSS?
 1. What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
@@ -124,12 +154,16 @@ This file contains a number of front-end interview questions that can be used wh
 1. Describe BFC(Block Formatting Context) and how it works.
 1. What are the various clearing techniques and which is appropriate for what context?
 1. Explain CSS sprites, and how you would implement them on a page or site.
+  * Using 1 image file with small images on it and mapping to different parts of that image to pull out icons and other images.
 1. What are your favourite image replacement techniques and which do you use when?
 1. How would you approach fixing browser-specific styling issues?
+  * Using Modernizr for CSS reset, to get all browsers on similar footing, then styling for different contexts from there.
 1. How do you serve your pages for feature-constrained browsers?
-  * What techniques/processes do you use?
+  * *What techniques/processes do you use?*
 1. What are the different ways to visually hide content (and make it available only for screen readers)?
+  * **Bootstrap**: Add class **"sr-only"** to an element.
 1. Have you ever used a grid system, and if so, what do you prefer?
+  * **Bootstrap is amazing**
 1. Have you used or implemented media queries or mobile specific layouts/CSS?
 1. Are you familiar with styling SVG?
 1. How do you optimize your webpages for print?
@@ -145,28 +179,47 @@ This file contains a number of front-end interview questions that can be used wh
 1. What's the difference between inline and inline-block?
 1. What's the difference between a relative, fixed, absolute and statically positioned element?
 1. The 'C' in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?
+  * You can override properties very easily, either using `!important` or just loading your custom CSS file after a style library and piggybacking on their class/id names
 1. What existing CSS frameworks have you used locally, or in production? How would you change/improve them?
+  * Bootstrap and Foundation: Both are really excellent. I think that Bootstrap favors a more up-to-date style, but I haven't used Foundation in a very long time, so I can't really speak knowledgably on the subject.
 1. Have you played around with the new CSS Flexbox or Grid specs?
+  * Played with them, no. Read about them, yes. I need to get around to messing with them.
 1. How is responsive design different from adaptive design?
 1. Have you ever worked with retina graphics? If so, when and what techniques did you use?
 1. Is there any reason you'd want to use `translate()` instead of *absolute positioning*, or vice-versa? And why?
 
-#### JS Questions:
+#### JS Questions: <a id="js-questions"></a>
 
 1. Explain event delegation
+  * Using a single event handler on a **parent element** in order to keep your code DRY. The **child elements** will trigger the event on the parent by way of **Event Bubbling**.
 1. Explain how `this` works in JavaScript
+  * The value that `this` references depends on circumstances. 
+  * Any unscoped (i.e. not in an object) function call will have `this = window` (DOMWindow, if you prefer). 
+  * Anything that is part of a **prototype**, or has been changed using **apply or bind**, will have `this` as that object ("itself", if you prefer).
 1. Explain how prototypal inheritance works
+  * When it comes to inheritance, JavaScript only has one construct: **objects**. Each object has an internal link to another object called its prototype. That prototype object has a **prototype** of its own, and so on until an **object** is reached with `null` as its **prototype**. `null`, by definition, has no prototype, and acts as the **final link** in this prototype chain.
+  * **Inheriting properties** : JavaScript objects are dynamic "bags" of properties (referred to as own properties). JavaScript objects have a link to a prototype object. When trying to access a property of an object, the property will not only be sought on the object but on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain is reached.
 1. What do you think of AMD vs CommonJS?
 1. Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
+
+  ```javascript
+  (function foo(){
+    //CODE
+  }());
+  ```
 1. What's the difference between a variable that is: `null`, `undefined` or undeclared?
   * How would you go about checking for any of these states?
 1. What is a closure, and how/why would you use one?
+  [Check here!](http://8bitg.github.io/greg-blog/2015/08/10/interview-questions.html#closures)
 1. What's a typical use case for anonymous functions?
+  * Same as IIFE's. Want to run something, but avoid cluttering the global namespace.
 1. How do you organize your code? (module pattern, classical inheritance?)
 1. What's the difference between host objects and native objects?
 1. Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
 1. What's the difference between `.call` and `.apply`?
+  * Seeding arguments. 
+  *  Both can be called on functions, which they run in the context of the first argument. In `call`, the **subsequent arguments** are passed in to the function as they are, while `apply` expects the **second argument to be an array** that it unpacks as arguments for the called function.
 1. Explain `Function.prototype.bind`.
 1. When would you use `document.write()`?
 1. What's the difference between feature detection, feature inference, and using the UA string?
@@ -204,20 +257,20 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 1. What is event loop?
   * What is the difference between call stack and task queue?
 
-#### Testing Questions:
+#### Testing Questions: <a id="testing-questions"></a>
 
 1. What are some advantages/disadvantages to testing your code?
 1. What tools would you use to test your code's functionality?
 1. What is the difference between a unit test and a functional/integration test?
 1. What is the purpose of a code style linting tool?
 
-#### Performance Questions:
+#### Performance Questions: <a id="performance-questions"></a>
 
 1. What tools would you use to find a performance bug in your code?
 1. What are some ways you may improve your website's scrolling performance?
 1. Explain the difference between layout, painting and compositing.
 
-#### Network Questions:
+#### Network Questions: <a id="network-questions"></a>
 
 1. Traditionally, why has it been better to serve site assets from multiple domains?
 1. Do your best to describe the process from the time you type in a website's URL to it finishing loading on your screen.
@@ -231,34 +284,49 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
   * X-Frame-Options
 1. What are HTTP actions? List all HTTP actions that you know, and explain them.
 
-#### Coding Questions:
+#### Coding Questions: <a id="coding-questions"></a>
 
-1. Question: What is the value of `foo`?*
+1. Question: What is the value of `foo`?
 
 ```javascript
 var foo = 10 + '20';
+
+// foo = '1020'
 ```
 
-1. Question: How would you make this work?*
+1. Question: How would you make this work?
 
 ```javascript
 add(2, 5); // 7
 add(2)(5); // 7
 ```
 
-1. Question: What value is returned from the following statement?*
+```javascript
+/* Answer */
+var add = function(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+```
+
+1. Question: What value is returned from the following statement?
 
 ```javascript
 "i'm a lasagna hog".split("").reverse().join("");
+
+// "goh angasal a m'i"
 ```
 
-1. Question: What is the value of `window.foo`?*
+1. Question: What is the value of `window.foo`?
 
 ```javascript
 ( window.foo || ( window.foo = "bar" ) );
+
+// window.foo = "bar"
 ```
 
-1. Question: What is the outcome of the two alerts below?*
+1. Question: What is the outcome of the two alerts below?
 
 ```javascript
 var foo = "Hello";
@@ -266,26 +334,36 @@ var foo = "Hello";
   var bar = " World";
   alert(foo + bar);
 })();
+
 alert(foo + bar);
+
+// "Hello World"
+// ERROR: bar is not defined
 ```
 
-1. Question: What is the value of `foo.length`?*
+1. Question: What is the value of `foo.length`?
 
 ```javascript
 var foo = [];
 foo.push(1);
 foo.push(2);
+
+// foo.length = 2
 ```
 
-1. Question: What is the value of `foo.x`?*
+1. Question: What is the value of `foo.x`?
 
 ```javascript
 var foo = {n: 1};
 var bar = foo;
 foo.x = foo = {n: 2};
+
+// foo.x is 'undefined'
+
+// foo is Object {n: 2}
 ```
 
-1. Question: What does the following code print?*
+1. Question: What does the following code print?
 
 ```javascript
 console.log('one');
@@ -293,9 +371,15 @@ setTimeout(function() {
   console.log('two');
 }, 0);
 console.log('three');
+
+// Two is evaluated last.
+
+// one
+// three
+// two
 ```
 
-#### Fun Questions:
+#### Fun Questions: <a id="fun-questions"></a>
 
 1. What's a cool project that you've recently worked on?
 1. What are some things you like about the developer tools you use?
