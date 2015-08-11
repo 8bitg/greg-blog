@@ -16,6 +16,7 @@ I've been meeting with a number of interviewers in the last several weeks, so I'
 3. [Event Delegation](#event-delegation)
 4. [Apply()](#methods-apply)
 5. [Call()](#methods-call)
+5. [Bind()](#methods-bind)
 
 <hr>
 
@@ -140,3 +141,41 @@ var min = Math.min.apply(null, numbers); // Min value of array
 <hr>
 
 ### Call() <a id="methods-call"></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank">Learn More</a>
+
+[Back to Top](#)  
+<hr>
+
+### Bind() <a id="methods-bind"></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank">Learn More</a>
+
+[Back to Top](#)  
+<hr>
+
+### Get Primes Algorithm
+
+#### Write a javascript function which takes in an integer value and returns back an array of all of the prime numbers which factor out of it. (e.g primeFactors(12) -> [2,3,5,7,11])
+```javascript
+function getPrimes(max) {
+    var temp = [], 
+        i, 
+        j, 
+        primes = [];
+        
+    for (i = 2; i <= max; ++i) {
+        if (!temp[i]) {
+            // i has not been marked -- it is prime
+            primes.push(i);
+            for (j = i << 1; j <= max; j += i) {
+                temp[j] = true;
+            }
+        }
+    }
+    return primes;
+}
+
+console.log(getPrimes(30));
+```
+
+[Back to Top](#)  
+<hr>
