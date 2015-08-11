@@ -68,10 +68,10 @@ console.log(add10(2)); // Outputs 12
 <a href="http://javascript.info/tutorial/bubbling-and-capturing" target="_blank">Learn More</a>
  
 ![Bubbling Model](/assets/eventbubbling.png "Bubbling Model")  
-**Bubbling**
+**Bubbling**  
 The event is captured and handled by the *innermost* element, then propagated to the outer elements. 
 
-**Capturing or *Trickling*** *Only supported by some browsers*
+**Capturing or *Trickling*** *Only supported by some browsers*  
 The event is captured by the *outermost* element and propagated to the inner elements.
 
 ### *BUBBLE UP, TRICKLE DOWN*
