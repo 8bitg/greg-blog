@@ -30,7 +30,7 @@ This file contains a number of front-end interview questions that can be used wh
   1. [How to Contribute](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/CONTRIBUTING.md)
   1. [License](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/LICENSE.md)
 
-#### General Questions: <a id="general-questions"></a>
+#### General Questions: <a href="general-questions"></a>
 
 1. What did you learn yesterday/this week?
   * How to use Markdown quickly and efficiently.
@@ -148,9 +148,16 @@ This file contains a number of front-end interview questions that can be used wh
 #### CSS Questions: <a id="css-questions"></a>
 
 1. What is the difference between classes and ID's in CSS?
-1. What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
-1. Describe Floats and how they work.
-1. Describe z-index and how stacking context is formed.
+  * **Classes** can be used many times throughout the Document, good for using similar styles across elements.
+  * **IDs** should **NOT** be used more than once, it is a specific name for a specific entity.
+1. What's the difference between **"resetting"** and **"normalizing"** CSS? Which would you choose, and why?
+  * **Resetting** sets the values of all CSS attributes to 0, because many browsers use different values by default.
+  * **Normalizing** is the act of setting the default CSS values to a specific value that is generally accepted across most browsers. Makes element render similarly across browsers. Normally, one would use a library like Modernizr or Normalize to accomplish this.
+  * I would choose Normalization. There are extremely adept libraries out there that will start with a **reset** and then follow with **normalizing** for any given browser.
+1. Describe **Floats** and how they work.
+  * The `float` CSS property specifies that an element should be taken from the normal flow and placed along the left or right side of its container, where text and inline elements will **wrap around it**.
+1. Describe **z-index** and how stacking context is formed.
+  * Z-Index determines the *order in which overlapping elements will stack*.
 1. Describe BFC(Block Formatting Context) and how it works.
 1. What are the various clearing techniques and which is appropriate for what context?
 1. Explain CSS sprites, and how you would implement them on a page or site.
@@ -168,6 +175,7 @@ This file contains a number of front-end interview questions that can be used wh
 1. Are you familiar with styling SVG?
 1. How do you optimize your webpages for print?
 1. What are some of the "gotchas" for writing efficient CSS?
+  * Gotcha! You can't unless you're using SASS.
 1. What are the advantages/disadvantages of using CSS preprocessors?
   * Describe what you like and dislike about the CSS preprocessors you have used.
 1. How would you implement a web design comp that uses non-standard fonts?
@@ -175,13 +183,30 @@ This file contains a number of front-end interview questions that can be used wh
 1. Describe pseudo-elements and discuss what they are used for. 
 1. Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models.
 1. What does ```* { box-sizing: border-box; }``` do? What are its advantages?
-1. List as many values for the display property that you can remember.
+1. List as many values for the `display` **property** that you can remember.
+  * **None;**
+  * **Inline;**
+  * **Block;**
+  * **Flex;**
+  * **Inherit;**
+  * **Table;**
 1. What's the difference between inline and inline-block?
+  * **Inline elements:**
+      * **respect** left & right margins and padding, but not top & bottom
+      * **cannot** have a width and height set
+      * **allow** other elements to sit to their left and right.  
+  * **Block elements:**
+      * **respect** all of those
+      * **force a line break** after the block element  
+  * **Inline-block elements:**
+      * **allow** other elements to sit to their left and right
+      * **respect** top & bottom margins and padding
+      * **respect** height and width
 1. What's the difference between a relative, fixed, absolute and statically positioned element?
 1. The 'C' in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?
-  * You can override properties very easily, either using `!important` or just loading your custom CSS file after a style library and piggybacking on their class/id names
+  * You can **override properties** very easily, either using `!important` or just loading your custom CSS file after a style library and piggybacking on their class/id names
 1. What existing CSS frameworks have you used locally, or in production? How would you change/improve them?
-  * Bootstrap and Foundation: Both are really excellent. I think that Bootstrap favors a more up-to-date style, but I haven't used Foundation in a very long time, so I can't really speak knowledgably on the subject.
+  * **Bootstrap** and **Foundation**: Both are really excellent. I think that Bootstrap favors a more up-to-date style, but I haven't used Foundation in a very long time, so I can't really speak knowledgably on the subject.
 1. Have you played around with the new CSS Flexbox or Grid specs?
   * Played with them, no. Read about them, yes. I need to get around to messing with them.
 1. How is responsive design different from adaptive design?
@@ -190,13 +215,13 @@ This file contains a number of front-end interview questions that can be used wh
 
 #### JS Questions: <a id="js-questions"></a>
 
-1. Explain event delegation
+1. Explain **event delegation**
   * Using a single event handler on a **parent element** in order to keep your code DRY. The **child elements** will trigger the event on the parent by way of **Event Bubbling**.
 1. Explain how `this` works in JavaScript
   * The value that `this` references depends on circumstances. 
-  * Any unscoped (i.e. not in an object) function call will have `this = window` (DOMWindow, if you prefer). 
+  * Any **unscoped** (i.e. not in an object) **function** call will have `this = window` (DOMWindow, if you prefer). 
   * Anything that is part of a **prototype**, or has been changed using **apply or bind**, will have `this` as that object ("itself", if you prefer).
-1. Explain how prototypal inheritance works
+1. Explain how **prototypal inheritance** works
   * When it comes to inheritance, JavaScript only has one construct: **objects**. Each object has an internal link to another object called its prototype. That prototype object has a **prototype** of its own, and so on until an **object** is reached with `null` as its **prototype**. `null`, by definition, has no prototype, and acts as the **final link** in this prototype chain.
   * **Inheriting properties** : JavaScript objects are dynamic "bags" of properties (referred to as own properties). JavaScript objects have a link to a prototype object. When trying to access a property of an object, the property will not only be sought on the object but on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain is reached.
 1. What do you think of AMD vs CommonJS?
